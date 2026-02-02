@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Media Grid Test</title>
+  <style>
+    body {
+      background: #0a0e1a;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+      padding: 30px 0;
+      min-height: 300px;
+      border: 2px solid red;
+    }
+    
+    .media-card {
+      background: rgba(77, 166, 255, 0.2);
+      border: 1px solid #4da6ff;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Media Grid Test</h1>
+  <div id="mediaGrid" class="media-grid">
+    <div class="loading-message">Loading...</div>
+  </div>
+  
+  <script>
+    async function testMediaGrid() {
+      console.log("Starting test...");
+      try {
+        const response = await fetch('/assets');
+        const data = await response.json();
+        console.log("Assets:", data.assets.length);
+        
+        const grid = document.getElementById("mediaGrid");
+        grid.innerHTML = "";
+        
+        data.assets.forEach((asset, idx) => {
+          const card = document.createElement("div");
+          card.className = "media-card";
+          card.textContent = `${idx + 1}. ${asset.category}`;
+          grid.appendChild(card);
+        });
+        
+        console.log("Grid populated with", data.assets.length, "items");
+      } catch (error) {
+        console.error("Error:", error);
+        document.getElementById("mediaGrid").textContent = `Error: ${error.message}`;
+      }
+    }
+    
+    testMediaGrid();
+  </script>
+</body>
+</html>

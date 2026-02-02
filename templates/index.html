@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AB AGENCY - Créateurs de Moments Inoubliables. Agence spécialisée dans la conception, la production et la mise en lumière de spectacles qui marquent les esprits." />
+  <title>AB AGENCY | Créateurs de Moments Inoubliables</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&family=Parisienne&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+  <div id="splashScreen" class="splash-screen">
+    <div class="splash-video-wrapper">
+      <iframe 
+        src="https://www.youtube.com/embed/iMAfIRaLl3k?autoplay=1&mute=1&loop=1&playlist=iMAfIRaLl3k&controls=0&showinfo=0&rel=0&modestbranding=1" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="splash-content">
+      <h1 class="splash-title">AB AGENCY</h1>
+      <p class="splash-subtitle">Créateurs de Moments Inoubliables</p>
+      <button class="splash-skip" onclick="document.getElementById('splashScreen').style.display='none'">Entrer</button>
+    </div>
+  </div>
+  <div class="noise"></div>
+  <header class="nav-wrapper">
+    <nav class="nav">
+      <a class="brand" href="#hero">AB <span>AGENCY</span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Ouvrir le menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links">
+        <a href="#agency">Agence</a>
+        <a href="#gallery">Media</a>
+        <a href="#booking">Booking</a>
+        <a href="#footer">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section id="hero" class="section hero">
+      <div class="hero-content" data-parallax="0.25">
+        <p class="signature">AB AGENCY</p>
+        <h1>Créateurs de Moments Inoubliables</h1>
+        <p class="lead">Agence spécialisée dans la conception, la production et la mise en lumière de spectacles qui marquent les esprits. Nous transformons chaque projet en expérience scénique inoubliable.</p>
+        <div class="hero-categories">
+          <span class="category-tag">Danse</span>
+          <span class="category-tag">Chant</span>
+          <span class="category-tag">Arts du Mouvement</span>
+          <span class="category-tag">Performances Circassiennes et Aériennes</span>
+        </div>
+        <div class="cta-group">
+          <a class="btn primary" href="#agency">Découvrir l'Agence</a>
+          <a class="btn ghost" href="#booking">Réserver</a>
+        </div>
+        <p class="hero-tagline">L'art du spectacle au service d'émotions durables.</p>
+      </div>
+      <div class="hero-video-grid">
+        <div class="video-embed-item">
+          <iframe src="https://www.youtube-nocookie.com/embed/Tz-khkZz_zY?autoplay=1&mute=1&loop=1&playlist=Tz-khkZz_zY&controls=0&modestbranding=1&rel=0&playsinline=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="video-embed-item">
+          <iframe src="https://www.youtube.com/embed/_4FGVRpNoEs?autoplay=1&mute=1&loop=1&playlist=_4FGVRpNoEs&controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="video-embed-item">
+          <iframe src="https://www.youtube.com/embed/C07qzQpEJ8w?autoplay=1&mute=1&loop=1&playlist=C07qzQpEJ8w&controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+        <div class="video-embed-item">
+          <iframe src="https://www.youtube.com/embed/1tdX0DYK2Jk?autoplay=1&mute=1&loop=1&playlist=1tdX0DYK2Jk&controls=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="hero-glow"></div>
+    </section>
+
+    <section id="agency" class="section agency-new">
+      <h2>L'Agence</h2>
+      <div class="agency-text-blocks">
+        <div class="text-block">
+          <p>AB AGENCY est une agence créative dédiée à la conception, la production et la mise en lumière de spectacles exceptionnels. Notre mission est de transformer chaque événement en une expérience scénique mémorable qui marque les esprits et touche les cœurs.</p>
+        </div>
+        <div class="text-block">
+          <p>Nous excellons dans l'art du spectacle vivant, combinant danse, chant, arts du mouvement et performances circassiennes pour créer des moments inoubliables. Notre équipe d'artistes passionnés et de créatifs expérimentés travaille en étroite collaboration avec vous pour donner vie à votre vision.</p>
+        </div>
+      </div>
+      <div class="agency-carousel-wrapper">
+        <button class="carousel-nav prev" onclick="scrollCarousel('agencyVideoCarousel', -1)">‹</button>
+        <div class="borderless-carousel" id="agencyVideoCarousel"></div>
+        <button class="carousel-nav next" onclick="scrollCarousel('agencyVideoCarousel', 1)">›</button>
+      </div>
+    </section>
+
+
+
+    <section id="gallery" class="section gallery">
+      <div class="section-head">
+        <h2>Media Gallery</h2>
+        <p>Découvrez nos réalisations à travers nos événements, backstage, classes et artistes.</p>
+      </div>
+      <div class="gallery-container">
+        <div class="filter-bar" id="galleryFilters">
+          <button class="filter-btn active" data-filter="all">Tous</button>
+          <button class="filter-btn" data-filter="events">Événements</button>
+          <button class="filter-btn" data-filter="backstage">Backstage</button>
+          <button class="filter-btn" data-filter="classes">Classes</button>
+          <button class="filter-btn" data-filter="artists">Artistes</button>
+        </div>
+        <div id="mediaGrid" class="media-grid">
+          <div class="loading-message">Chargement des médias...</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="booking" class="section booking">
+      <div class="booking-header">
+        <h2>Calendrier & Booking</h2>
+        <p>Consultez nos disponibilités 2026, choisissez une formule et contactez-nous.</p>
+      </div>
+      
+      <!-- Price Grid at Top -->
+      <div class="price-grid-top">
+        <h3>Nos Formules</h3>
+        <div class="packages">
+          <div class="package-card">
+            <h4>Essentiel Scène</h4>
+            <p class="price">Sur devis</p>
+            <ul>
+              <li>Performance solo 15 min</li>
+              <li>Chorégraphie originale</li>
+              <li>Brief créatif inclus</li>
+            </ul>
+          </div>
+          <div class="package-card featured">
+            <h4>Expérience Immersive</h4>
+            <p class="price">Sur devis</p>
+            <ul>
+              <li>Équipe de 3 artistes</li>
+              <li>Acrobaties & effets scénographiques</li>
+              <li>Direction artistique complète</li>
+            </ul>
+          </div>
+          <div class="package-card">
+            <h4>Production Signature</h4>
+            <p class="price">Sur devis</p>
+            <ul>
+              <li>Création sur mesure</li>
+              <li>Coordination technique</li>
+              <li>Gestion logistique</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calendar and Form Side by Side -->
+      <div class="booking-layout">
+        <div class="calendar-section">
+          <h3>Calendrier 2026</h3>
+          <div class="year-calendar-grid" id="yearCalendar2026">
+            <!-- Months will be populated here by JavaScript -->
+            <div class="month-tile" onclick="openMonthModal('Janvier', 'janvier')">
+              <h4>Janvier</h4>
+              <div class="month-events">
+                <p style="color: var(--muted); font-size: 0.8rem;">Aucun événement prévu</p>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Février', 'fevrier')">
+              <h4>Février</h4>
+              <div class="month-events">
+                <div class="event-item">
+                  <span class="event-date">15 Fév</span>
+                  Spectacle Gala
+                </div>
+                <button class="month-cta" type="button" onclick="openMonthModal('Février', 'fevrier')">Voir le planning</button>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Mars', 'mars')">
+              <h4>Mars</h4>
+              <div class="month-events">
+                <div class="event-item">
+                  <span class="event-date">10 Mar</span>
+                  Festival Printemps
+                </div>
+                <button class="month-cta" type="button" onclick="openMonthModal('Mars', 'mars')">Voir le planning</button>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Avril', 'avril')">
+              <h4>Avril</h4>
+              <div class="month-events">
+                <div class="event-item">
+                  <span class="event-date">5 Avr</span>
+                  Showcase Danse
+                </div>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Mai', 'mai')">
+              <h4>Mai</h4>
+              <div class="month-events">
+                <div class="event-item">
+                  <span class="event-date">1 Mai</span>
+                  Gala de Charité
+                </div>
+                <button class="month-cta" type="button" onclick="openMonthModal('Mai', 'mai')">Voir le planning</button>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Juin', 'juin')">
+              <h4>Juin</h4>
+              <div class="month-events">
+                <div class="event-item">
+                  <span class="event-date">15 Juin</span>
+                  Festival d'Été
+                </div>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Juillet', 'juillet')">
+              <h4>Juillet</h4>
+              <div class="month-events">
+                <p style="color: var(--muted); font-size: 0.8rem;">Aucun événement prévu</p>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Août', 'aout')">
+              <h4>Août</h4>
+              <div class="month-events">
+                <p style="color: var(--muted); font-size: 0.8rem;">Aucun événement prévu</p>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Septembre', 'septembre')">
+              <h4>Septembre</h4>
+              <div class="month-events">
+                <div class="event-item">
+                  <span class="event-date">10 Sep</span>
+                  Rentrée Artistique
+                </div>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Octobre', 'octobre')">
+              <h4>Octobre</h4>
+              <div class="month-events">
+                <div class="event-item">
+                  <span class="event-date">31 Oct</span>
+                  Soirée Spéciale
+                </div>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Novembre', 'novembre')">
+              <h4>Novembre</h4>
+              <div class="month-events">
+                <p style="color: var(--muted); font-size: 0.8rem;">Aucun événement prévu</p>
+              </div>
+            </div>
+            <div class="month-tile" onclick="openMonthModal('Décembre', 'decembre')">
+              <h4>Décembre</h4>
+              <div class="month-events">
+                <div class="event-item">
+                  <span class="event-date">15 Déc</span>
+                  Gala de Noël
+                </div>
+                <button class="month-cta" type="button" onclick="openMonthModal('Décembre', 'decembre')">Voir le planning</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Month Modal -->
+        <div id="monthModal" class="month-modal" onclick="closeMonthModal(event)">
+          <div class="month-modal-content" onclick="event.stopPropagation()">
+            <div class="month-modal-header">
+              <h2 id="modalMonthTitle">Janvier 2026</h2>
+              <button class="month-modal-close" onclick="closeMonthModal()">&times;</button>
+            </div>
+            <div class="month-modal-events" id="modalEventsList">
+              <p style="color: var(--muted); text-align: center;">Chargement...</p>
+            </div>
+            <div class="month-modal-footer">
+              <p style="text-align: center; color: var(--muted); font-size: 0.9rem;">Cliquez en dehors pour fermer</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-form-section">
+          <form class="contact-form" id="contactForm">
+            <h3>Formulaire de Contact</h3>
+            <label>
+              Nom complet
+              <input type="text" name="client_name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" required />
+            </label>
+            <label>
+              Type d'événement
+              <input type="text" name="event_type" required />
+            </label>
+            <label>
+              Date souhaitée
+              <input type="date" name="event_date" required />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <button type="submit" class="btn primary">Envoyer</button>
+            <p class="form-status" id="formStatus"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer" class="footer">
+    <div class="footer-section">
+      <h3>About Us</h3>
+      <p>AB AGENCY - Créateurs de moments inoubliables depuis 2024</p>
+      <p>Conception, production et mise en lumière de spectacles exceptionnels</p>
+    </div>
+    <div class="footer-section">
+      <h3>Legal Terms</h3>
+      <p><a href="#">Mentions légales</a></p>
+      <p><a href="#">Conditions générales</a></p>
+      <p><a href="#">Politique de confidentialité</a></p>
+    </div>
+    <div class="footer-section">
+      <h3>Social Media</h3>
+      <p><a href="#" target="_blank">Instagram</a></p>
+      <p><a href="#" target="_blank">YouTube</a></p>
+      <p><a href="#" target="_blank">Facebook</a></p>
+      <p><a href="#" target="_blank">LinkedIn</a></p>
+    </div>
+    <div class="footer-section">
+      <h3>FAQ</h3>
+      <p><a href="#">Questions fréquentes</a></p>
+      <p><a href="#">Comment réserver</a></p>
+      <p><a href="#">Nos services</a></p>
+    </div>
+  </footer>
+
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Fermer">×</button>
+    <div class="lightbox-content" id="lightboxContent"></div>
+  </div>
+
+  <script>
+    // Test renderMediaGrid manually after a delay
+    setTimeout(() => {
+      console.log("=== Manual Test After 3 Seconds ===");
+      console.log("state.assets:", state.assets);
+      console.log("state.assets.length:", state.assets.length);
+      const grid = document.getElementById("mediaGrid");
+      console.log("mediaGrid element:", grid);
+      if (grid) {
+        console.log("mediaGrid innerHTML length:", grid.innerHTML.length);
+        console.log("mediaGrid innerHTML:", grid.innerHTML.substring(0, 500));
+      }
+    }, 3000);
+  </script>
+  <script src="/static/app.js"></script>
+</body>
+</html>
