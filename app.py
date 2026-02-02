@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import json
 import os
+import smtplib
+from email.message import EmailMessage
 from datetime import date, timedelta
 from pathlib import Path
 from typing import Any, Dict, List
@@ -74,6 +76,47 @@ def _db_connection():
         return psycopg2.connect(db_url)
     except Exception:
         return None
+
+
+def _send_inquiry_email(payload: Dict[str, Any]) -> None:
+    smtp_host = os.getenv("SMTP_HOST")
+    if not smtp_host:
+        return
+
+    smtp_port = int(os.getenv("SMTP_PORT", "587"))
+    smtp_user = os.getenv("SMTP_USERNAME", "")
+    smtp_pass = os.getenv("SMTP_PASSWORD", "")
+    smtp_use_tls = os.getenv("SMTP_USE_TLS", "true").lower() in {"1", "true", "yes"}
+    smtp_from = os.getenv("SMTP_FROM", smtp_user or "no-reply@abagency.local")
+    smtp_to = os.getenv("SMTP_TO", "roum1990@hotmail.fr")
+
+    message = EmailMessage()
+    message["Subject"] = "Nouvelle demande – AB AGENCY"
+    message["From"] = smtp_from
+    message["To"] = smtp_to
+    message.set_content(
+        "\n".join(
+            [
+                "Nouvelle demande via le formulaire:",
+                f"Nom: {payload.get('client_name')}",
+                f"Email: {payload.get('email')}",
+                f"Type d'événement: {payload.get('event_type')}",
+                f"Date souhaitée: {payload.get('event_date')}",
+                "Message:",
+                payload.get("message", ""),
+            ]
+        )
+    )
+
+    try:
+        with smtplib.SMTP(smtp_host, smtp_port, timeout=10) as server:
+            if smtp_use_tls:
+                server.starttls()
+            if smtp_user and smtp_pass:
+                server.login(smtp_user, smtp_pass)
+            server.send_message(message)
+    except Exception as exc:
+        print(f"Email send failed: {exc}")
 
 
 @app.route("/")
@@ -179,6 +222,8 @@ def inquiry():
         log_path = BASE_DIR / "inquiries.jsonl"
         with log_path.open("a", encoding="utf-8") as handle:
             handle.write(json.dumps(payload, ensure_ascii=False) + "\n")
+
+    _send_inquiry_email(payload)
 
     return jsonify({"status": "ok"})
 
