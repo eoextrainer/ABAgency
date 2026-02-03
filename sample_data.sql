@@ -22,7 +22,7 @@ VALUES
 
 INSERT INTO performances (user_id, title, performance_date, fee)
 VALUES
-  (3, 'Gala d\'hiver', CURRENT_DATE - INTERVAL '30 days', 1200.00),
+  (3, 'Gala d''hiver', CURRENT_DATE - INTERVAL '30 days', 1200.00),
   (3, 'Soirée corporate', CURRENT_DATE - INTERVAL '12 days', 800.00);
 
 INSERT INTO subscriptions (user_id, plan, status, renewal_date)
@@ -31,5 +31,5 @@ VALUES
 
 INSERT INTO messages (sender_id, recipient_id, body)
 VALUES
-  (3, 2, 'Bonjour, j\'ai une question sur la prochaine programmation.'),
+  (3, 2, 'Bonjour, j''ai une question sur la prochaine programmation.'),
   (2, 3, 'Merci ! Je reviens vers toi très vite.');
