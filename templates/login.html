@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AB AGENCY | Connexion</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-card">
+    <h1>Connexion</h1>
+    <p>Accédez à votre espace artiste.</p>
+    {% if error %}
+      <div class="auth-error">{{ error }}</div>
+    {% endif %}
+    <form method="POST" class="auth-form">
+      <label>Email
+        <input type="email" name="email" required />
+      </label>
+      <label>Mot de passe
+        <input type="password" name="password" required />
+      </label>
+      <button type="submit" class="btn primary">Se connecter</button>
+    </form>
+    <div class="auth-hint">
+      <p>Comptes de test:</p>
+      <p>Admin: admin@abagency.com / Admin123!</p>
+      <p>Moderator: moderator@abagency.com / Mod123!</p>
+      <p>Artist: artist@abagency.com / User123!</p>
+    </div>
+  </div>
+</body>
+</html>

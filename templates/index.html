@@ -38,6 +38,11 @@
         <a href="#gallery">Media</a>
         <a href="#booking">Booking</a>
         <a href="#footer">Contact</a>
+        {% if current_user %}
+        <a class="nav-login" href="/logout">Logout</a>
+        {% else %}
+        <a class="nav-login" href="/login">Login</a>
+        {% endif %}
       </div>
     </nav>
   </header>

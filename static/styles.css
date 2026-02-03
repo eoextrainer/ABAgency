@@ -28,6 +28,214 @@ body {
   overflow-x: hidden;
 }
 
+.auth-body,
+.workspace-body {
+  background: var(--secondary);
+  color: var(--text);
+}
+
+.auth-card {
+  max-width: 520px;
+  margin: 80px auto;
+  padding: 32px;
+  background: rgba(15, 25, 40, 0.7);
+  border-radius: 16px;
+  border: 1px solid rgba(77, 166, 255, 0.25);
+  box-shadow: var(--shadow);
+}
+
+.auth-card h1 {
+  margin-bottom: 10px;
+}
+
+.auth-error {
+  background: rgba(255, 90, 90, 0.15);
+  border: 1px solid rgba(255, 90, 90, 0.35);
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin: 12px 0;
+  color: #ff9b9b;
+}
+
+.auth-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.auth-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 0.9rem;
+}
+
+.auth-form input,
+.auth-form textarea {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(77, 166, 255, 0.3);
+  background: rgba(15, 25, 40, 0.8);
+  color: var(--text);
+}
+
+.auth-hint {
+  margin-top: 16px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.workspace-hero {
+  position: relative;
+  height: 360px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(77, 166, 255, 0.2);
+}
+
+.workspace-hero-video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.workspace-hero-content {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 14, 26, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 8vw;
+  gap: 12px;
+}
+
+.workspace-hero-content h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.workspace-role {
+  color: #d4af37;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  font-size: 0.8rem;
+}
+
+.workspace-main {
+  padding: 40px 8vw 80px;
+  display: grid;
+  gap: 32px;
+}
+
+.workspace-profile {
+  background: rgba(15, 25, 40, 0.6);
+  padding: 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(77, 166, 255, 0.2);
+}
+
+.profile-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.profile-grid input,
+.profile-grid textarea {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(77, 166, 255, 0.3);
+  background: rgba(10, 14, 26, 0.8);
+  color: var(--text);
+}
+
+.workspace-tabs {
+  background: rgba(15, 25, 40, 0.6);
+  border-radius: 18px;
+  border: 1px solid rgba(77, 166, 255, 0.2);
+  padding: 20px;
+}
+
+.tab-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.tab {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(77, 166, 255, 0.3);
+  background: rgba(10, 14, 26, 0.6);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.tab.active {
+  border-color: rgba(212, 175, 55, 0.8);
+  color: #d4af37;
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.workspace-calendar,
+.performance-list {
+  display: grid;
+  gap: 12px;
+}
+
+.calendar-card,
+.performance-card,
+.subscription-card {
+  background: rgba(10, 14, 26, 0.8);
+  border-radius: 12px;
+  padding: 12px 16px;
+  border: 1px solid rgba(77, 166, 255, 0.2);
+}
+
+.inline-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.inline-form input,
+.inline-form textarea,
+.inline-form select {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(77, 166, 255, 0.3);
+  background: rgba(10, 14, 26, 0.8);
+  color: var(--text);
+}
+
+.chat-box {
+  max-height: 260px;
+  overflow-y: auto;
+  display: grid;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+.chat-message {
+  background: rgba(10, 14, 26, 0.85);
+  border-radius: 10px;
+  padding: 8px 12px;
+  border: 1px solid rgba(77, 166, 255, 0.2);
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+}
+
 .splash-screen {
   position: fixed;
   inset: 0;
@@ -156,6 +364,20 @@ body {
 .nav-links a {
   text-decoration: none;
   color: var(--text);
+
+.nav-links .nav-login {
+  color: #d4af37;
+  font-weight: 700;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.nav-links .nav-login:hover {
+  color: #f1d686;
+  border-color: rgba(212, 175, 55, 0.9);
+}
   font-family: "Montserrat", sans-serif;
   font-size: 0.85rem;
   letter-spacing: 0.15rem;

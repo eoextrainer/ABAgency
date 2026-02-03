@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AB AGENCY | Workspace</title>
+  <link rel="stylesheet" href="/static/styles.css" />
+  <script defer src="/static/workspace.js"></script>
+</head>
+<body class="workspace-body">
+  <header class="workspace-hero">
+    <div class="workspace-hero-video">
+      <iframe src="{{ current_user.hero_video_url }}?autoplay=1&mute=1&loop=1&playlist={{ current_user.hero_video_url|replace('https://www.youtube-nocookie.com/embed/','') }}&controls=0&playsinline=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="workspace-hero-content">
+      <p class="workspace-role">{{ current_user.role|capitalize }} Workspace</p>
+      <h1>{{ current_user.name }}</h1>
+      <p>Bienvenue dans votre espace personnalisé AB AGENCY.</p>
+      <a class="btn ghost" href="/logout">Logout</a>
+    </div>
+  </header>
+
+  <main class="workspace-main">
+    <section class="workspace-profile">
+      <h2>Profil Personnel</h2>
+      <form id="profileForm" class="profile-grid">
+        <label>Bio
+          <textarea name="bio" rows="3">{{ profile.bio if profile else '' }}</textarea>
+        </label>
+        <label>Téléphone
+          <input type="text" name="phone" value="{{ profile.phone if profile else '' }}" />
+        </label>
+        <label>Localisation
+          <input type="text" name="location" value="{{ profile.location if profile else '' }}" />
+        </label>
+        <label>Site web
+          <input type="text" name="website" value="{{ profile.website if profile else '' }}" />
+        </label>
+        <button type="submit" class="btn primary">Enregistrer</button>
+      </form>
+    </section>
+
+    <section class="workspace-tabs">
+      <div class="tab-bar">
+        <button class="tab active" data-tab="calendar">Calendrier</button>
+        <button class="tab" data-tab="subscription">Abonnement</button>
+        <button class="tab" data-tab="media">Media</button>
+        <button class="tab" data-tab="performance">Performances</button>
+        <button class="tab" data-tab="chat">Messagerie</button>
+      </div>
+
+      <div class="tab-panel active" id="tab-calendar">
+        <h3>Événements à venir</h3>
+        <div class="workspace-calendar">
+          {% for ev in user_events %}
+            <div class="calendar-card">
+              <strong>{{ ev.title }}</strong>
+              <span>{{ ev.event_date }}</span>
+              <span>{{ ev.location }}</span>
+            </div>
+          {% else %}
+            <p>Aucun événement planifié.</p>
+          {% endfor %}
+        </div>
+        <form id="eventForm" class="inline-form">
+          <input type="text" name="title" placeholder="Titre" required />
+          <input type="date" name="event_date" required />
+          <input type="text" name="location" placeholder="Lieu" />
+          <button type="submit" class="btn primary">Ajouter</button>
+        </form>
+      </div>
+
+      <div class="tab-panel" id="tab-subscription">
+        <h3>Gestion d'abonnement</h3>
+        <div class="subscription-card">
+          <p>Plan: <strong>{{ subscription.plan if subscription else '—' }}</strong></p>
+          <p>Statut: <strong>{{ subscription.status if subscription else '—' }}</strong></p>
+          <p>Renouvellement: <strong>{{ subscription.renewal_date if subscription else '—' }}</strong></p>
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-media">
+        <h3>Media personnels</h3>
+        <form id="mediaUploadForm" class="inline-form" enctype="multipart/form-data">
+          <input type="file" name="file" accept="image/*,video/*" />
+          <button type="submit" class="btn primary">Uploader</button>
+        </form>
+        <form id="mediaUrlForm" class="inline-form">
+          <input type="url" name="url" placeholder="Lien distant (Google Drive, etc.)" />
+          <select name="media_type">
+            <option value="image">Image</option>
+            <option value="video">Video</option>
+          </select>
+          <button type="submit" class="btn ghost">Ajouter via URL</button>
+        </form>
+        <div class="media-grid">
+          {% for media in user_media %}
+            <div class="media-card">
+              {% if media.media_type == 'video' %}
+                <video src="{{ media.url }}" controls></video>
+              {% else %}
+                <img src="{{ media.url }}" alt="media" />
+              {% endif %}
+            </div>
+          {% else %}
+            <p>Aucun média pour le moment.</p>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="tab-panel" id="tab-performance">
+        <h3>Performances & Revenus</h3>
+        <div class="performance-list">
+          {% for perf in user_performances %}
+            <div class="performance-card">
+              <strong>{{ perf.title }}</strong>
+              <span>{{ perf.performance_date }}</span>
+              <span>{{ perf.fee }} €</span>
+            </div>
+          {% else %}
+            <p>Aucune performance enregistrée.</p>
+          {% endfor %}
+        </div>
+        <form id="performanceForm" class="inline-form">
+          <input type="text" name="title" placeholder="Titre" required />
+          <input type="date" name="performance_date" required />
+          <input type="number" name="fee" placeholder="Honoraires" step="0.01" />
+          <button type="submit" class="btn primary">Ajouter</button>
+        </form>
+      </div>
+
+      <div class="tab-panel" id="tab-chat">
+        <h3>Messagerie privée</h3>
+        <div class="chat-box" id="chatMessages">
+          {% for msg in chat_messages %}
+            <div class="chat-message">
+              <strong>{{ msg.sender_id }}</strong>
+              <span>{{ msg.body }}</span>
+            </div>
+          {% else %}
+            <p>Aucun message pour le moment.</p>
+          {% endfor %}
+        </div>
+        <form id="chatForm" class="inline-form">
+          <textarea name="body" rows="3" placeholder="Votre message" required></textarea>
+          <label class="checkbox">
+            <input type="checkbox" name="to_moderator" value="true" />
+            Envoyer au modérateur
+          </label>
+          <button type="submit" class="btn primary">Envoyer</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

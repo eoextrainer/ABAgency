@@ -35,6 +35,25 @@ The inquiry form can send emails via SMTP. Configure these environment variables
 
 If `SMTP_HOST` is not set, inquiries are stored in `inquiries.jsonl`.
 
+## Multi‑User Workspace (Roles & Tabs)
+Roles supported: `admin`, `moderator`, `community`.
+
+Seeded users:
+- admin@abagency.com / Admin123!
+- moderator@abagency.com / Mod123!
+- artist@abagency.com / User123!
+
+Workspace includes:
+- Hero video with user name
+- Editable profile
+- Events calendar
+- Subscription status
+- Media uploads / remote URL media
+- Performance tracking
+- Private chat (option to message moderator)
+
+URL: `/workspace`
+
 ## Docker
 Build and run locally with Docker Compose:
 ```bash
@@ -48,6 +67,24 @@ These scripts provide basic operational safety:
 - `scripts/self_heal.sh` runs healthcheck and triggers rollback on failure.
 
 Set `LAST_GOOD_TAG` to a known stable tag before using rollback.
+
+## Scheduled Health Checks (Cron)
+Example cron (every 5 minutes):
+```bash
+*/5 * * * * cd /path/to/project && ./scripts/cron_healthcheck.sh
+```
+
+## Tag Creation on Deploy
+Use:
+```bash
+./scripts/tag_on_deploy.sh
+```
+
+## Test Suite (Smoke)
+Run:
+```bash
+./scripts/test_app.sh
+```
 
 ## Render Deployment (Step‑by‑Step)
 1. **Create a GitHub repo** and push this project.
